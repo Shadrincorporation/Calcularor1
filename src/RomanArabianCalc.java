@@ -17,7 +17,7 @@ public class RomanArabianCalc {
         for (int i = 0; i < userInput.length(); i++) {
             under_char[i] = userInput.charAt(i);
                 operation = '+';
-            }
+
             if (under_char[i] == '-') {
                 operation = '-';
             }
