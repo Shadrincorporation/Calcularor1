@@ -11,7 +11,7 @@ public class RomanArabianCalc {
     static int result;
 
     public static void main (String[] args) {
-        System.out.println("Введите выражение:");
+        System.out.println("Введите выражение в формате Х+Х:");
         String userInput = scanner.nextLine();
         char[] under_char = new char[10];
         for (int i = 0; i < userInput.length(); i++) {
