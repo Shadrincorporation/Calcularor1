@@ -1,3 +1,4 @@
+
 package calcRA;
 import java.util.*;
 
@@ -10,10 +11,10 @@ public class RomanArabianCalc {
     static List roman = Arrays.asList("I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X");
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         System.out.println("Введите выражение в формате Х+Х:");
         String userInput = scanner.nextLine();
-        char[] under_char = new char[5];
+        char[] under_char = new char[10];
         for (int i = 0; i < userInput.length(); i++) {
             under_char[i] = userInput.charAt(i);
 
@@ -37,7 +38,7 @@ public class RomanArabianCalc {
         if (roman.contains(stable00) || roman.contains(stable01)) {
             number1 = romanToNumber(stable00);
             number2 = romanToNumber(stable01);
-            if (number1 < 1 && number2 < 1 && number1 < 11 && number2 < 11) {
+            if (number1 < 1 && number2 < 1 && number1 > 10 && number2 > 10) {
                 System.out.println("Вы ввели число менее 1 или более 10. Введите число от 1 до 10 включительно");
                 return;
             } else {
@@ -47,7 +48,7 @@ public class RomanArabianCalc {
                 System.out.println(stable00 + " " + operation + " " + stable01 + " = " + resultRoman);
             }
         } else {
-            if (number1 < 1 && number2 < 1 && number1 < 11 && number2 < 11) {
+            if (number1 < 1 && number2 < 1 && number1 > 10 && number2 > 10) {
                 System.out.println("Вы ввели число менее 1 или более 10. Введите число от 1 до 10 включительно");
                 return;
             }
@@ -60,7 +61,7 @@ public class RomanArabianCalc {
     }
 
 
-    private static int romanToNumber(String roman) {
+    private static int romanToNumber(String roman) throws Exception {
         if (roman.equals("I")) {
             return 1;
         } else if (roman.equals("II")) {
@@ -85,7 +86,7 @@ public class RomanArabianCalc {
         return -1;
     }
 
-    public static int calculated(int num1, int num2, char op) {
+    public static int calculated(int num1, int num2, char op) throws Exception {
         int result = 0;
         switch (op) {
             case '+':
@@ -99,7 +100,7 @@ public class RomanArabianCalc {
                 break;
             case '/':
                 if (num2 == 0) {
-                    System.err.println("на ноль нельзя делить");
+                    System.err.println("Деление на ноль запрещено.");
                 }
                 result = num1 / num2;
                 break;
@@ -108,8 +109,7 @@ public class RomanArabianCalc {
         }
         return result;
     }
-
-    private static String numberToRoman(int number) {
+    private static String numberToRoman(int number) throws Exception {
         String[] hundreds = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
         String[] tens = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
         String[] ones = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
