@@ -1,8 +1,6 @@
 package calcRA;
 
 import java.util.*;
-
-
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     static int number1, number2;
@@ -45,7 +43,7 @@ public class Main {
         }
         String[] blocks = input.split("[+-/*]");
 
-        if (blocks[0].equals("") && blocks[1].equals(""))
+        if (blocks[0].equals("") || blocks[1].equals(""))
         {
             throw new Exception("Может быть только 2 числа и один символ");
         }
@@ -57,7 +55,7 @@ public class Main {
         if (roman.contains(stable00) && roman.contains(stable01)) {
             number1 = Main.romanToNumber(stable00);
             number2 = Main.romanToNumber(stable01);
-            if (number1 < 1 && number2 < 1 && number1 > 10 && number2 > 10) {
+            if (number1 < 1 || number2 < 1 || number1 > 10 || number2 > 10) {
                 throw new IllegalArgumentException("Вы ввели число менее 1 или более 10. Введите число от 1 до 10 включительно");
             } else{
                 try {
@@ -69,7 +67,7 @@ public class Main {
                 }
             }
         } else if(!roman.contains(stable00) && !roman.contains(stable01)) {
-            if (number1 < 1 || number2 < 1 || number1 > 10 || number2 > 10) {
+            if (Integer.parseInt(stable00) < 1 || Integer.parseInt(stable01) < 1 || Integer.parseInt(stable00) > 10 || Integer.parseInt(stable01) > 10) {
                 throw new IllegalArgumentException("Вы ввели число менее 1 или более 10. Введите число от 1 до 10 включительно");
             }
             number1 = Integer.parseInt(stable00);
